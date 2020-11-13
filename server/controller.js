@@ -51,5 +51,25 @@ module.exports = {
     }
     res.status(200).send(req.session.user);
 
+  },
+
+  getPosts: async (req, res) => {
+    const {id} = req.params;
+    const {userposts, search} = req.query;
+    const db = req.app.get('db');
+
+    if (userposts && search) {
+      let foundPosts = await db.user_posts_with_search(id, search);
+      res.json(foundPosts);
+    } else if (!userposts && !search) {
+      let otherUsersPosts = await db.other_users_posts(id);
+      res.json(otherUsersPosts);
+    } else if (!userposts && search) {
+      let otherUsersFoundPosts = await db.other_users_posts_with_search(id, search);
+      res.json(otherUsersFoundPosts);
+    }
+    
   }
+
+ 
 }

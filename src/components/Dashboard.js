@@ -5,17 +5,30 @@ export class Dashboard extends Component {
     super()
 
     this.state = {
-      myPosts: true
+      posts: [],
+      userPosts: true,
+      search: ""
     }
 
   }
+
   toggleSwitch = () => {
     this.setState({
-      myPosts: !this.state.myPosts
+      userPosts: !this.state.userPosts
     })
   }
+  
+  
 
   render() {
+
+    const mappedPosts = this.state.posts.map(post => { 
+       return(<li>
+        {post.title}{post.username}
+        {post.profile_pic}
+        </li>)
+    })
+
     return (
       <div>
         <h1>Dashboard</h1>
@@ -24,8 +37,11 @@ export class Dashboard extends Component {
         <button>Search</button>
         <button>Reset</button>
 
-        <input onChange={this.toggleSwitch} stype="checkbox" value="myPosts"/>
-        <label for="myPosts">My Posts</label>
+        <input onChange={this.toggleSwitch} type="checkbox" value={this.state.userPosts}/>
+        <label for="userPosts">My Posts</label>
+        <ul>
+        {mappedPosts}
+        </ul>
 
       </div>
     )
