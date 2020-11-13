@@ -1,20 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
 import Nav from './components/Nav';
-import Auth from './components/Auth';
-import Dashboard from './components/Dashboard';
-import Form from './components/Form';
-import Post from './components/Post';
+import routes from './routes';
+import { useLocation } from 'react-router-dom';
 
 function App() {
+  let location = useLocation();
   return (
-    <div className="App">
-     <Nav/>
-     <Auth/>
-     <Dashboard/>
-     <Form/>
-     <Post/>
 
+    <div className="App">
+
+      { location.pathname !== "/" && 
+        <Nav location={location}/>
+      }
+     
+      {routes}
     </div>
   );
 }
