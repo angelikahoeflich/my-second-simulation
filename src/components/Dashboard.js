@@ -7,7 +7,14 @@ export class Dashboard extends Component {
     this.state = {
       myPosts: true
     }
+
   }
+  toggleSwitch = () => {
+    this.setState({
+      myPosts: !this.state.myPosts
+    })
+  }
+
   render() {
     return (
       <div>
@@ -17,7 +24,7 @@ export class Dashboard extends Component {
         <button>Search</button>
         <button>Reset</button>
 
-        <input type="checkbox"/>
+        <input onChange={this.toggleSwitch} stype="checkbox" value="myPosts"/>
         <label for="myPosts">My Posts</label>
 
       </div>

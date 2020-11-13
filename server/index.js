@@ -22,7 +22,11 @@ massive({
 
 //endpoints
 
-app.post('/api/auth/register', ctrl.register )
-app.post('/api/auth/login', ctrl.login )
+app.post('/api/auth/register', ctrl.register );
+app.post('/api/auth/login', ctrl.login );
+app.post('/api/post/:userid', );
+app.get('/api/posts/:userid', );
+app.get('/api/post/:postid')
+
 
 app.listen(SERVER_PORT, console.log(`listening on port ${SERVER_PORT}`));

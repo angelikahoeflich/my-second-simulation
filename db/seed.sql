@@ -5,3 +5,10 @@ CREATE TABLE users (
     profile_pic TEXT
 )
 
+CREATE TABLE posts(
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(45),
+    img TEXT,
+    content TEXT,
+    author_id INT REFERENCES users
+)
