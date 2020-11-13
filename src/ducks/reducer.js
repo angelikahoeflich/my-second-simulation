@@ -7,7 +7,7 @@ const initialState = {
   }
 }
 
-CONST LOGIN_USER = "LOGIN_USER";
+const LOGIN_USER = "LOGIN_USER";
 
 export function loginUser(user){
   return {
