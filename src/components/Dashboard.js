@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux';
+import axios from 'axios';
+import {initialState} from '../ducks/reducer';
 
 export class Dashboard extends Component {
   constructor(){
@@ -18,6 +21,14 @@ export class Dashboard extends Component {
     })
   }
   
+  getPosts = async () => {
+    let { id } = this.props.user;
+    
+   
+    // let posts = await ;
+
+
+  }
   
 
   render() {
@@ -35,10 +46,14 @@ export class Dashboard extends Component {
         <label for="search">Search</label>
         <input type="text"/>
         <button>Search</button>
-        <button>Reset</button>
+        <button onClick={(e) => {
+          this.props.dispatch({type:"UPDATE_POSTS"});
+          console.log("this.props.dispatch?", this.props.dispatch);
+          }}>Reset</button>
 
         <input onChange={this.toggleSwitch} type="checkbox" value={this.state.userPosts}/>
         <label for="userPosts">My Posts</label>
+        
         <ul>
         {mappedPosts}
         </ul>
@@ -48,4 +63,7 @@ export class Dashboard extends Component {
   }
 }
 
-export default Dashboard
+
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps)(Dashboard);
