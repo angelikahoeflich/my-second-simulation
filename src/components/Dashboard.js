@@ -4,8 +4,8 @@ import axios from 'axios';
 import {initialState} from '../ducks/reducer';
 
 export class Dashboard extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
 
     this.state = {
       posts: [],
@@ -32,8 +32,8 @@ export class Dashboard extends Component {
   
 
   render() {
-
-    const mappedPosts = this.state.posts.map(post => { 
+    console.log("props wtf?!", this.props)
+    const mappedPosts = this.props.posts.map(post => { 
        return(<li>
         {post.title}{post.username}
         {post.profile_pic}

@@ -24,5 +24,5 @@ export class Nav extends Component {
   }
 }
 
-// const mapStateToProps = state => state
-export default connect(state => state)(Nav); 
+const mapStateToProps = state => state
+export default connect(mapStateToProps)(Nav); 

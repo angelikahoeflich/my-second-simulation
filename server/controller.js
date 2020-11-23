@@ -37,7 +37,6 @@ module.exports = {
 
     const foundUser = await db.login_user(username, hash);
 
-    console.log("Found user!", foundUser)
 
     if(foundUser[0]){
       return res.status(200).send('username is here')
@@ -69,7 +68,15 @@ module.exports = {
       res.json(otherUsersFoundPosts);
     }
     
+  },
+  
+  logout: async (req, res) => {
+    const db = req.app.get('db')
+      req.session.destroy
+      res.sendStatus(200)
+    },
+  
+
   }
 
  
-}

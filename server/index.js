@@ -35,7 +35,7 @@ massive({
 
 app.post('/api/auth/register', ctrl.register );
 app.post('/api/auth/login', ctrl.login );
-app.post('/api/post/:userid', );
+app.post('/api/auth/logout', ctrl.logout);
 app.get('/api/posts/:userid', ctrl.getPosts );
 app.get('/api/post/:postid')
 
