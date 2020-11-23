@@ -43,11 +43,11 @@ module.exports = {
       return res.status(200).send('username is here')
     }
 
-
+    console.log("req.session", req.session);
 
     req.session.user = {
-      userId: newUser.user_id,
-      username: newUser.username
+      userId: foundUser.user_id,
+      username: foundUser.username
     }
     res.status(200).send(req.session.user);
 

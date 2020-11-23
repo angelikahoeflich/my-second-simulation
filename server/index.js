@@ -3,6 +3,7 @@ const express = require('express');
 const massive = require('massive');
 const {SERVER_PORT, CONNECTION_STRING} = process.env;
 const ctrl = require ('./controller');
+const sessions = require('express-session');
 
 const app = express();
 

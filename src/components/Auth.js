@@ -30,9 +30,12 @@ export class Auth extends Component {
 
   register = async (e) => {
     e.preventDefault();
+    console.log("Event default prevented")
     const {username, password} = this.state;
     try{
+      console.log("Attempting to register...")
       const user = await Axios.post('/api/auth/register', {username, password})
+      console.log("Got user?...", user)
       this.props.loginUser(user.data);
       this.props.history.push('/new')
     } 
@@ -43,10 +46,12 @@ export class Auth extends Component {
   login = async (e) => {
     e.preventDefault();
     const {username, password} = this.state;
+    
     try{
       const user = await Axios.post('/api/auth/login', {username, password})
       this.props.loginUser(user.data);
       this.props.history.push('/new')
+      
     } 
     catch(err){
         alert(err.response.request.response)
